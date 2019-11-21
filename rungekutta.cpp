@@ -18,12 +18,12 @@ int main(){
     //respectivamente: limiteInferior, limiteSuperior, subIntervalos, valorInicial
     
     float h, xt, x, y, k1, k2, k3, k4;
-    vet v[m];
 
     cout << "Digite os valores em ordem: (seperados por espaco)" << endl;
     cout << "Limite inferior (x inicial), limite superior (x final), numero de subintervalos valor inicial: " << endl;   
     cin >> a >> b >> m >> yo;
-
+ 
+    vet v[m];
     h = ((float(b-a))/float(m));
     xt = a;
     v[0].x = xt;
