@@ -21,8 +21,6 @@ int main(){
     cout << "intervalo inicial, intervalo final, maximo de iteracoes, tolerancia" << endl;
     cin >> a >> b >> iterMax >> toler;
 
-    x = fabs(a+b)/2; //fabs = modulo de dois numeros reais
-
     fa = (pow(a,2) - 10); //fx em função de a
     fb = (pow(b,2) - 10); //fx em função de b
     fx = (pow(x,2) - 10); //fx em função de x
@@ -31,33 +29,22 @@ int main(){
         cout << "A funcao nao muda de sinal nos estremos do intervalo dado" << endl;
         return 0;
     }else{
-        deltaX = (abs(b-a))/2;
+        deltaX = (fabs(b-a))/2;
         printf("k      a        b        x        f(a)     f(b)       f(x)     erro\n");
-        printf("%d   %.4f   %.4f   %.4f   %.4f   %.4f   %.4f   %.4f\n", iter, a, b, x, fa, fb, fx, deltaX);
-        iter++;
-
-        if(fx < 0){
-            fa = fx;
-            a = x;
-        }else{
-            fb = fx;
-            b = x;
-        }
 
         while((deltaX > toler) && (iter < iterMax)){
+            x = (a+b)/2;
             fx = (pow(x,2) - 10);
             printf("%d   %.4f   %.4f   %.4f   %.4f   %.4f   %.4f   %.4f\n", iter, a, b, x, fa, fb, fx, deltaX);
             
-            if(fx < 0){
+            if(fa * fx > 0){
                 fa = fx;
                 a = x;
             }else{
-                fb = fx;
                 b = x;
             }
 
-            x = fabs(a+b)/2;
-            deltaX = (abs(b-a))/2; 
+            deltaX = deltaX/2; 
             
             iter++;
         }
